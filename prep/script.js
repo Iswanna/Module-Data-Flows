@@ -10,24 +10,12 @@ const films =
     console.log(films, "<------film---->");
     // The goal is to render a single film card in the browser's user interface
 
-    // In order to be able to see or render the film on the browser's user interface when the page loads,
-    // we need to do the following
-   // create a section element
-   // create an header element
-   // append the film.title to the textcontent of the header element
-   // append the header element to the section element
-   // append the section element to the body of the html documen
+    // Goal: Refactor the code implementation above to use a film card template
 
-    const filmCard = document.createElement("section");
-    const title = document.createElement("h1");
-    const director = document.createElement("p");
+    const filmCard = document.getElementById("film-card-template").content.cloneNode(true);
 
-    title.textContent = films.title;
-    director.textContent = films.director;
+    console.log(filmCard);
 
-    filmCard.appendChild(title);
-    filmCard.appendChild(director);
-
-
+    filmCard.querySelector("h3").textContent = films.title;
 
     document.body.appendChild(filmCard);
