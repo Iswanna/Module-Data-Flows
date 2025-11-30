@@ -35,5 +35,5 @@ function createFilmCard(film) {
 
 for (const film of films) {
   const card = createFilmCard(film);
-  document.body.append(createFilmCard(film));
+  document.body.appendChild(createFilmCard(film));
 }
