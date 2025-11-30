@@ -33,7 +33,10 @@ function createFilmCard(film) {
   return filmCard;
 }
 
+// Refactor to create a new array of filmcards and then appending to the DOM 
+const filmCardArray = [];
 for (const film of films) {
   const card = createFilmCard(film);
-  document.body.appendChild(createFilmCard(film));
+  filmCardArray.push(card);
 }
+document.body.append(...filmCardArray);
