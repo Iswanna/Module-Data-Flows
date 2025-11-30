@@ -27,8 +27,7 @@ function createFilmCard(film) {
 
   filmCard.querySelector("h3").textContent = film.title;
   filmCard.querySelector("p").textContent = film.director;
-  filmCard.querySelector("time").textContent = film.times;
-  filmCard.querySelector("data").textContent = film.certificate;
+ 
 
   return filmCard;
 }
