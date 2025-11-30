@@ -33,10 +33,8 @@ function createFilmCard(film) {
   return filmCard;
 }
 
-// Refactor to create a new array of filmcards and then appending to the DOM 
-const filmCardArray = [];
-for (const film of films) {
-  const card = createFilmCard(film);
-  filmCardArray.push(card);
-}
+// Refactor to use map method to create a new array of filmcards and then appending to the DOM
+
+const filmCardArray = films.map(createFilmCard);
+
 document.body.append(...filmCardArray);
