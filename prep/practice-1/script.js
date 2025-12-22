@@ -52,6 +52,8 @@ const createFilmCard = ({ title, director, duration, certificate }) => {
   return card;
 };
 
+
+function render() {
 // pass the function createFimCard as an argument to the map method so that
 // map method will loop through each film in the films array and implement the function createFimCards on it
 // filmCards variable will holds a reference to the new array with the result
@@ -59,3 +61,6 @@ const filmCards = films.map(createFilmCard);
 
 // Append the array of filmcards to the page so it becomes visible using the spread operator
 document.body.append(...filmCards);
+}
+
+render()
