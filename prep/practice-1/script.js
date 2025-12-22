@@ -36,6 +36,7 @@ const state = {
       duration: 151,
     },
   ],
+  searchTerm: "",
 };
 
 const createFilmCard = ({ title, director, duration, certificate }) => {
