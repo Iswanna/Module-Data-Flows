@@ -35,8 +35,15 @@ const state = {
       certificate: "12",
       duration: 151,
     },
+    {
+      title: "Typist Artist Pirate King",
+      director: "Carol Morley",
+      times: ["15:00", "20:00"],
+      certificate: "12A",
+      duration: 108,
+    },
   ],
-  searchTerm: "",
+  searchTerm: "Pirate",
 };
 
 const createFilmCard = ({ title, director, duration, certificate }) => {
@@ -57,14 +64,21 @@ const createFilmCard = ({ title, director, duration, certificate }) => {
 
 function render() {
   const container = document.getElementById("films-container");
+
+  // Clear existing cards before appending new ones
   container.innerHTML = "";
-  // pass the function createFimCard as an argument to the map method so that
-  // map method will loop through each film in the films array and implement the function createFimCards on it
-  // filmCards variable will holds a reference to the new array with the result
-  const filmCards = state.films.map(createFilmCard);
+
+  // Filter films based on searchTerm (derived from state)
+  const filteredFilms = state.films.filter((film) => {
+    return film.title.toLowerCase().includes(state.searchTerm.toLowerCase());
+  });
+
+  // Create film cards from filtered results
+  const filmCards = filteredFilms.map(createFilmCard);
 
   // Append the array of filmcards to the page so it becomes visible using the spread operator
   container.append(...filmCards);
 }
 
 render();
+
