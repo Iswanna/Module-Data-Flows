@@ -43,7 +43,7 @@ const state = {
       duration: 108,
     },
   ],
-  searchTerm: "Pirate",
+  searchTerm: "",
 };
 
 const createFilmCard = ({ title, director, duration, certificate }) => {
@@ -82,3 +82,15 @@ function render() {
 
 render();
 
+// Add event listener to search input
+const searchInput = document.getElementById("film-search");
+
+searchInput.addEventListener("input", handleSearchInput);
+
+function handleSearchInput(event) {
+  // update state with the new search term
+  state.searchTerm = event.target.value;
+
+  // Re-render to show filtered results
+  render();
+}
