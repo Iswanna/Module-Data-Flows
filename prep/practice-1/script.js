@@ -25,10 +25,25 @@ const createFilmCard = ({ title, director, duration, certificate }) => {
 // API endpoint
 const endpoint = "https://programming.codeyourfuture.io/dummy-apis/films.json";
 
-// Fetch function definition
+// Fetch function with caching
 const fetchFilms = async () => {
+  // Check if data exists in localStorage
+  const cachedData = localStorage.getItem('films');
+  
+  if (cachedData) {
+    console.log('Using cached data');
+    return JSON.parse(cachedData);
+  }
+  
+  // If not cached, fetch from API
+  console.log('Fetching from API');
   const response = await fetch(endpoint);
-  return await response.json();
+  const data = await response.json();
+  
+  // Store in localStorage
+  localStorage.setItem('films', JSON.stringify(data));
+  
+  return data;
 }
 
 // Initialize app: fetch films data and render
