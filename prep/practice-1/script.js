@@ -1,10 +1,11 @@
+// State declaraction
 const state = {
   films: [],
   searchTerm: "",
 };
 
 
-
+// Helper function to create a DOM card from film data
 const createFilmCard = ({ title, director, duration, certificate }) => {
   // Get a <template> element from the DOM (#film-card)
   const template = document.getElementById("film-card");
@@ -21,19 +22,23 @@ const createFilmCard = ({ title, director, duration, certificate }) => {
   return card;
 };
 
+// API endpoint
 const endpoint = "https://programming.codeyourfuture.io/dummy-apis/films.json";
 
+// Fetch function definition
 const fetchFilms = async () => {
   const response = await fetch(endpoint);
   return await response.json();
 }
 
+// Initialize app: fetch films data and render
 fetchFilms().then((films) => {
   // Assign the fetched data to state.films
   state.films = films;
   render();
 })
 
+// Render function: filters and displays film cards based on current state
 function render() {
   const container = document.getElementById("films-container");
 
