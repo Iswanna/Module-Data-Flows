@@ -1,50 +1,9 @@
 const state = {
-  films: [
-    {
-      title: "Killing of Flower Moon",
-      director: "Martin Scorsese",
-      times: ["15:35"],
-      certificate: "15",
-      duration: 112,
-    },
-    {
-      title: "Dune",
-      director: "Denis Villeneuve",
-      times: ["12:00", "18:45"],
-      certificate: "12A",
-      duration: 155,
-    },
-    {
-      title: "Everything Everywhere All at Once",
-      director: "Daniel Kwan & Daniel Scheinert",
-      times: ["14:20", "20:30"],
-      certificate: "12A",
-      duration: 139,
-    },
-    {
-      title: "Top Gun: Maverick",
-      director: "Joseph Kosinski",
-      times: ["11:00", "16:15", "21:00"],
-      certificate: "12",
-      duration: 131,
-    },
-    {
-      title: "The Fabelmans",
-      director: "Steven Spielberg",
-      times: ["13:00", "19:10"],
-      certificate: "12",
-      duration: 151,
-    },
-    {
-      title: "Typist Artist Pirate King",
-      director: "Carol Morley",
-      times: ["15:00", "20:00"],
-      certificate: "12A",
-      duration: 108,
-    },
-  ],
+  films: [],
   searchTerm: "",
 };
+
+
 
 const createFilmCard = ({ title, director, duration, certificate }) => {
   // Get a <template> element from the DOM (#film-card)
@@ -61,6 +20,19 @@ const createFilmCard = ({ title, director, duration, certificate }) => {
 
   return card;
 };
+
+const endpoint = "https://programming.codeyourfuture.io/dummy-apis/films.json";
+
+const fetchFilms = async () => {
+  const response = await fetch(endpoint);
+  return await response.json();
+}
+
+fetchFilms().then((films) => {
+  // Assign the fetched data to state.films
+  state.films = films;
+  render();
+})
 
 function render() {
   const container = document.getElementById("films-container");
@@ -80,7 +52,7 @@ function render() {
   container.append(...filmCards);
 }
 
-render();
+
 
 // Add event listener to search input
 const searchInput = document.getElementById("film-search");
